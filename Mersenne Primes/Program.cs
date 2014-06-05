@@ -53,7 +53,7 @@ namespace Mersenne_Primes
                 Console.WriteLine("{0} is not a valid prime number", prime);
         }
 
-        static IEnumerable<BigInteger> BigIntegerPrimeValidator(BigInteger min,BigInteger max)
+        static IEnumerable<BigInteger> BigIntegerPrimeValidator(BigInteger min, BigInteger max)
         {
             validPrime = true;
             BigInteger i = min;
@@ -62,13 +62,13 @@ namespace Mersenne_Primes
                 if ((BigInteger.Remainder(max, i) == 0))
                     validPrime = false;
                 yield return i;
-                i += 1;     
+                i += 1;
             }
         }
         static BigInteger BigIntegerPow(BigInteger powBase, BigInteger powExponent)
         {
             BigInteger constantPowBase = powBase;
-            for (BigInteger i = 1; i < powExponent; i++ )
+            for (BigInteger i = 1; i < powExponent; i++)
             {
                 powBase = powBase * constantPowBase;
             }
