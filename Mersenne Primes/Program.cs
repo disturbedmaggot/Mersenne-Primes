@@ -43,7 +43,7 @@ namespace Mersenne_Primes
             }
             Console.WriteLine(prime);
 
-            Parallel.ForEach(BigIntegerPrimeValidator(2, prime), (i) => { });
+            Parallel.ForEach(BigIntegerPrimeValidator(prime), (i) => { });
 
             if (validPrime == true)
             {
@@ -53,16 +53,26 @@ namespace Mersenne_Primes
                 Console.WriteLine("{0} is not a valid prime number", prime);
         }
 
-        static IEnumerable<BigInteger> BigIntegerPrimeValidator(BigInteger min, BigInteger max)
+        static IEnumerable<BigInteger> BigIntegerPrimeValidator(BigInteger number)
         {
+            BigInteger max = (BigInteger)Math.Ceiling(Math.Sqrt((double)number));
             validPrime = true;
-            BigInteger i = min;
-            while (i < max)
+            BigInteger i = 2;
+
+            if (BigInteger.Remainder(number, 2) == 0)
             {
-                if ((BigInteger.Remainder(max, i) == 0))
+                validPrime = false;
+            }
+            else i++;
+
+            while (i < max && validPrime == true)
+            {
+                if ((BigInteger.Remainder(number, i) == 0))
+                {
                     validPrime = false;
+                }
                 yield return i;
-                i += 1;
+                i += 2;
             }
         }
         static BigInteger BigIntegerPow(BigInteger powBase, BigInteger powExponent)
@@ -75,5 +85,7 @@ namespace Mersenne_Primes
 
             return powBase;
         }
+
+
     }
 }
