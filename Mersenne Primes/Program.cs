@@ -12,7 +12,6 @@ namespace Mersenne_Primes
         static bool validPrime = true;
         static void Main(string[] args)
         {
-
             int cycles = 0;
 
             bool validNumber = false;
